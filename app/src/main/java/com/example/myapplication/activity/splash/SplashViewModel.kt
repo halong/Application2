@@ -1,6 +1,7 @@
 package com.example.myapplication.activity.splash
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +10,7 @@ import com.example.myapplication.database.DatabaseUtil
 import com.example.myapplication.entity.banner.Banner
 import com.example.myapplication.entity.homearticles.HomeArticle
 import com.example.myapplication.entity.homearticles.HomeArticles
+import com.example.myapplication.entity.tree.AuthorArticles
 import com.example.myapplication.network.BaseResponse
 import com.example.myapplication.network.NetworkUtil
 import retrofit2.Call
@@ -26,6 +28,9 @@ class SplashViewModel(application: Application) : AndroidViewModel(application) 
 
     private val _bannersLiveData = MutableLiveData<List<Banner>>()
     val bannersLiveData: LiveData<List<Banner>> = _bannersLiveData
+
+    private val _authorArticlesLiveData = MutableLiveData<AuthorArticles>()
+    val authorArticlesLiveData: LiveData<AuthorArticles> = _authorArticlesLiveData
 
     fun getHomeArticles() {
         curPage = 0
@@ -76,7 +81,6 @@ class SplashViewModel(application: Application) : AndroidViewModel(application) 
                     if (banner != null) {
                         DatabaseUtil.getInstance(getApplication()).myDatabase.bannerDao().insert(banner)
                     }
-
                 }
 
                 override fun onFailure(call: Call<BaseResponse<List<Banner>>>, t: Throwable) {
@@ -89,5 +93,21 @@ class SplashViewModel(application: Application) : AndroidViewModel(application) 
     fun getBannersFromDatabase() {
         _bannersLiveData.value =
             DatabaseUtil.getInstance(getApplication()).myDatabase.bannerDao().getBanners
+    }
+
+    fun getAuthorArticles(){
+        NetworkUtil.wanAndroidApi.getAuthorArticles("鸿洋").enqueue(object : Callback<BaseResponse<AuthorArticles>>{
+            override fun onResponse(
+                call: Call<BaseResponse<AuthorArticles>>,
+                response: Response<BaseResponse<AuthorArticles>>
+            ) {
+                _authorArticlesLiveData.value= response.body()?.data
+            }
+
+            override fun onFailure(call: Call<BaseResponse<AuthorArticles>>, t: Throwable) {
+                _errorLiveData.value = t.message
+            }
+
+        })
     }
 }

@@ -37,15 +37,14 @@ class SplashActivity : AppCompatActivity() {
             binding.textView.text = it.toString()
         }
 
-        var b=true
+        var i=0
         binding.textView.setOnClickListener {
-            if (b){
-                viewModel.getBanners()
-                b=false
-            }else{
-                viewModel.getBannersFromDatabase()
-                b=true
+            when(i%3){
+                0->viewModel.getBanners()
+                1->viewModel.getBannersFromDatabase()
+                2->viewModel.getAuthorArticles()
             }
+            i++
         }
     }
 }
