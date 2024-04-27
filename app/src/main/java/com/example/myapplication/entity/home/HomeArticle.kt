@@ -1,6 +1,6 @@
-package com.example.myapplication.entity.toparticles
+package com.example.myapplication.entity.home
 
-data class TopArticle(
+data class HomeArticle(
     val adminAdd: Boolean,
     val apkLink: String,
     val audit: Int,
@@ -30,7 +30,7 @@ data class TopArticle(
     val shareUser: String,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Any>,
+    val tags: List<Tag>,
     val title: String,
     val type: Int,
     val userId: Int,

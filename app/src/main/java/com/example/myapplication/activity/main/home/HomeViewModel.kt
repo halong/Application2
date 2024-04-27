@@ -1,18 +1,18 @@
-package com.example.myapplication.activity.main
+package com.example.myapplication.activity.main.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.entity.banner.Banner
-import com.example.myapplication.entity.homearticles.HomeArticle
-import com.example.myapplication.entity.homearticles.HomeArticles
+import com.example.myapplication.entity.home.Banner
+import com.example.myapplication.entity.home.HomeArticle
+import com.example.myapplication.entity.home.HomeArticles
 import com.example.myapplication.network.BaseResponse
 import com.example.myapplication.network.NetworkUtil
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
     private val _errorLiveData = MutableLiveData<String>()
     val errorLiveData: LiveData<String> = _errorLiveData
 

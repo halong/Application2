@@ -1,4 +1,4 @@
-package com.example.myapplication.entity.friend
+package com.example.myapplication.entity.home
 
 data class Friend(
     val category: String,

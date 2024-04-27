@@ -1,4 +1,6 @@
-package com.example.myapplication.entity.homearticles
+package com.example.myapplication.entity.home
+
+import com.example.myapplication.entity.home.HomeArticle
 
 data class HomeArticles(
     val curPage: Int,

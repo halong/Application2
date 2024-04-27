@@ -1,4 +1,4 @@
-package com.example.myapplication.entity.hotkey
+package com.example.myapplication.entity.home
 
 data class Hotkey(
     val id: Int,

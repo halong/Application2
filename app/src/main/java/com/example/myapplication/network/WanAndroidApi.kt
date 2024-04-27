@@ -1,10 +1,13 @@
 package com.example.myapplication.network
 
-import com.example.myapplication.entity.banner.Banner
-import com.example.myapplication.entity.friend.Friend
-import com.example.myapplication.entity.homearticles.HomeArticles
-import com.example.myapplication.entity.hotkey.Hotkey
-import com.example.myapplication.entity.toparticles.TopArticle
+import com.example.myapplication.entity.home.Banner
+import com.example.myapplication.entity.home.Friend
+import com.example.myapplication.entity.home.HomeArticles
+import com.example.myapplication.entity.home.Hotkey
+import com.example.myapplication.entity.home.TopArticle
+import com.example.myapplication.entity.navi.Navi
+import com.example.myapplication.entity.project.ProjectList
+import com.example.myapplication.entity.project.ProjectTree
 import com.example.myapplication.entity.tree.AuthorArticles
 import com.example.myapplication.entity.tree.Tree
 import com.example.myapplication.entity.tree.TreeArticles
@@ -33,9 +36,18 @@ interface WanAndroidApi {
     fun getTrees():Call<BaseResponse<List<Tree>>>
 
     @GET("article/list/0/json")
-    fun getTreeArticles(@Query("cid") cid:Int):Call<BaseResponse<List<TreeArticles>>>
+    fun getTreeArticles(@Query("cid")cid:Int):Call<BaseResponse<List<TreeArticles>>>
 
     @GET("article/list/0/json")
     fun getAuthorArticles(@Query("author")author:String):Call<BaseResponse<AuthorArticles>>
+
+    @GET("navi/json")
+    fun getNavis():Call<BaseResponse<List<Navi>>>
+
+    @GET("project/tree/json")
+    fun getProjectTrees():Call<BaseResponse<List<ProjectTree>>>
+
+    @GET("project/list/1/json")
+    fun getProjectList(@Query("cid")cid:Int):Call<BaseResponse<ProjectList>>
 
 }

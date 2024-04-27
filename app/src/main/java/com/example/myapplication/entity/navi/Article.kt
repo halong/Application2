@@ -1,6 +1,6 @@
-package com.example.myapplication.entity.homearticles
+package com.example.myapplication.entity.navi
 
-data class HomeArticle(
+data class Article(
     val adminAdd: Boolean,
     val apkLink: String,
     val audit: Int,
@@ -30,7 +30,7 @@ data class HomeArticle(
     val shareUser: String,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Tag>,
+    val tags: List<Any>,
     val title: String,
     val type: Int,
     val userId: Int,

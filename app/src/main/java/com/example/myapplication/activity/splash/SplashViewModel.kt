@@ -1,15 +1,13 @@
 package com.example.myapplication.activity.splash
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.myapplication.database.DatabaseUtil
-import com.example.myapplication.entity.banner.Banner
-import com.example.myapplication.entity.homearticles.HomeArticle
-import com.example.myapplication.entity.homearticles.HomeArticles
+import com.example.myapplication.entity.home.Banner
+import com.example.myapplication.entity.home.HomeArticle
+import com.example.myapplication.entity.home.HomeArticles
 import com.example.myapplication.entity.tree.AuthorArticles
 import com.example.myapplication.network.BaseResponse
 import com.example.myapplication.network.NetworkUtil
@@ -107,7 +105,6 @@ class SplashViewModel(application: Application) : AndroidViewModel(application) 
             override fun onFailure(call: Call<BaseResponse<AuthorArticles>>, t: Throwable) {
                 _errorLiveData.value = t.message
             }
-
         })
     }
 }
