@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             setSelectedItem(2)
         }
 
-        binding.titleTree.setOnClickListener {
+        binding.titlePerson.setOnClickListener {
             setSelectedItem(3)
         }
         binding.iconPerson.setOnClickListener {
@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         icons.add(binding.iconProject)
         icons.add(binding.iconTree)
         icons.add(binding.iconPerson)
+
 
         val fragments = ArrayList<Fragment>()
         fragments.add(HomeFragment.newInstance())

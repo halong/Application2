@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.activity.main.MainActivity
 import com.example.myapplication.activity.splash.ui.splash.SplashFragment
@@ -28,6 +29,7 @@ class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
     //private lateinit var viewModel: SplashViewModel
     private val viewModel:SplashViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
@@ -41,24 +43,18 @@ class SplashActivity : AppCompatActivity() {
 //                .commitNow()
 //        }
 
-
         //viewModel = ViewModelProvider(this)[SplashViewModel::class.java]
-
         startActivity(Intent(this,MainActivity::class.java))
 
-        viewModel.errorLiveData.observe(this){
-            binding.textView.text = it
-        }
-        viewModel.bannersLiveData.observe(this){
-            binding.textView.text = it.toString()
-        }
-        viewModel.authorArticlesLiveData.observe(this){
-            binding.textView.text = it.toString()
-        }
-
-        binding.textView.setOnClickListener {
-            viewModel.getBanners()
-        }
+//        val layoutManager = LinearLayoutManager(this)
+//        layoutManager.orientation = LinearLayoutManager.VERTICAL
+//        binding.recyclerView.layoutManager= layoutManager
+//        val strings = ArrayList<String>()
+//        strings.add("aaaaaaaaaaaaa")
+//        strings.add("aaaaaaaaaaaaa")
+//        strings.add("aaaaaaaaaaaaa")
+//        strings.add("aaaaaaaaaaaaa")
+//        binding.recyclerView.adapter = MyAdapter(strings)
     }
 
 
