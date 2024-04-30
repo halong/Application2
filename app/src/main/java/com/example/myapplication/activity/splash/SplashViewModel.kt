@@ -90,7 +90,7 @@ class SplashViewModel(application: Application) : AndroidViewModel(application) 
 
     fun getBannersFromDatabase() {
         _bannersLiveData.value =
-            DatabaseUtil.getInstance(getApplication()).myDatabase.bannerDao().getBanners
+            DatabaseUtil.getInstance(getApplication()).myDatabase.bannerDao().banners
     }
 
     fun getAuthorArticles(){

@@ -96,6 +96,7 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        binding.viewPager.offscreenPageLimit = 3
     }
 
     private fun setSelectedItem(itemIndex: Int) {

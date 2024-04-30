@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentTreeBinding
 
 class TreeFragment : Fragment() {
 
@@ -15,17 +16,26 @@ class TreeFragment : Fragment() {
     }
 
     private val viewModel: TreeViewModel by viewModels()
+    private lateinit var binding: FragmentTreeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // TODO: Use the ViewModel
+        viewModel.errorLiveData.observe(this){
+            binding.textView.text = it
+        }
+        viewModel.treesLiveData.observe(this){
+            binding.textView.text = it.toString()
+        }
+        viewModel.getTrees()
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_tree, container, false)
+        binding=FragmentTreeBinding.inflate(inflater,container,false)
+        return binding.root
     }
 }

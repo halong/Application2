@@ -6,19 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.R
 import com.example.myapplication.activity.main.MainActivity
-import com.example.myapplication.activity.splash.ui.splash.SplashFragment
 import com.example.myapplication.databinding.ActivitySplashBinding
-import com.example.myapplication.entity.home.Hotkey
-import com.example.myapplication.network.BaseResponse
-import com.example.myapplication.network.NetworkUtil
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.net.URLEncoder
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {

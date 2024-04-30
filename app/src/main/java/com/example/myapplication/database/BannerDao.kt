@@ -11,7 +11,7 @@ import com.example.myapplication.entity.home.Banner
 @Dao
 interface BannerDao {
     @get:Query("SELECT * FROM banner")
-    val getBanners: List<Banner>
+    val banners: List<Banner>
 
     @Query("SELECT * FROM banner WHERE 'id' = :userId")
     fun getBannerById(userId: Int): Banner?
