@@ -4,11 +4,9 @@ import android.graphics.Color
 import android.graphics.drawable.VectorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.example.myapplication.activity.main.home.HomeFragment
 import com.example.myapplication.activity.main.person.PersonFragment
@@ -27,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initBottomNavigation()
+        initViewPager()
+    }
+
+    private fun initBottomNavigation(){
         binding.titleHome.setTextColor(Color.BLUE)
         (binding.iconHome.drawable as VectorDrawable).setTint(Color.BLUE)
 
@@ -67,16 +70,15 @@ class MainActivity : AppCompatActivity() {
         icons.add(binding.iconProject)
         icons.add(binding.iconTree)
         icons.add(binding.iconPerson)
+    }
 
-
+    private fun initViewPager(){
         val fragments = ArrayList<Fragment>()
         fragments.add(HomeFragment.newInstance())
         fragments.add(ProjectFragment.newInstance())
         fragments.add(TreeFragment.newInstance())
         fragments.add(PersonFragment.newInstance())
-
         binding.viewPager.adapter = MainAdapter(supportFragmentManager,fragments)
-
         binding.viewPager.addOnPageChangeListener(object : OnPageChangeListener{
             override fun onPageScrolled(
                 position: Int,
@@ -95,7 +97,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
         binding.viewPager.offscreenPageLimit = 3
     }
 

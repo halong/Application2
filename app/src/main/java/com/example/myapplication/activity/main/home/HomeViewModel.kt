@@ -17,7 +17,7 @@ class HomeViewModel : ViewModel() {
     val errorLiveData: LiveData<String> = _errorLiveData
 
     private var curPage = 0
-    private var homeArticles: MutableList<HomeArticle> = ArrayList()
+    private val homeArticles: MutableList<HomeArticle> = ArrayList()
     private val _homeArticlesLiveData = MutableLiveData<List<HomeArticle>>()
     val homeArticlesLiveData: LiveData<List<HomeArticle>> = _homeArticlesLiveData
 
@@ -32,7 +32,8 @@ class HomeViewModel : ViewModel() {
                     call: Call<BaseResponse<HomeArticles>>,
                     response: Response<BaseResponse<HomeArticles>>
                 ) {
-                    homeArticles = (response.body()?.data?.datas as MutableList<HomeArticle>?)!!
+                    homeArticles.clear()
+                    homeArticles.addAll((response.body()?.data?.datas as MutableList<HomeArticle>?)!!)
                     _homeArticlesLiveData.value = homeArticles
                 }
 

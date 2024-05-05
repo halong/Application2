@@ -28,7 +28,6 @@ class TreeFragment : Fragment() {
             binding.textView.text = it.toString()
         }
         viewModel.getTrees()
-
     }
 
     override fun onCreateView(

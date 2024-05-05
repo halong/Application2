@@ -11,9 +11,6 @@ import com.example.myapplication.databinding.ActivitySplashBinding
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
-    companion object {
-        private const val TAG = "SplashActivity"
-    }
 
     private lateinit var binding: ActivitySplashBinding
     //private lateinit var viewModel: SplashViewModel
@@ -24,8 +21,6 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Log.e(Companion.TAG, "onCreate: hello")
-
 //        if (savedInstanceState == null) {
 //            supportFragmentManager.beginTransaction()
 //                .replace(R.id.container, SplashFragment.newInstance())
@@ -35,15 +30,6 @@ class SplashActivity : AppCompatActivity() {
         //viewModel = ViewModelProvider(this)[SplashViewModel::class.java]
         startActivity(Intent(this,MainActivity::class.java))
 
-//        val layoutManager = LinearLayoutManager(this)
-//        layoutManager.orientation = LinearLayoutManager.VERTICAL
-//        binding.recyclerView.layoutManager= layoutManager
-//        val strings = ArrayList<String>()
-//        strings.add("aaaaaaaaaaaaa")
-//        strings.add("aaaaaaaaaaaaa")
-//        strings.add("aaaaaaaaaaaaa")
-//        strings.add("aaaaaaaaaaaaa")
-//        binding.recyclerView.adapter = MyAdapter(strings)
     }
 
 

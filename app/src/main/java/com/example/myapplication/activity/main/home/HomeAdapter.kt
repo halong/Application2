@@ -1,6 +1,5 @@
 package com.example.myapplication.activity.main.home
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.text.Html
 import android.view.LayoutInflater
@@ -20,18 +19,21 @@ import com.youth.banner.indicator.CircleIndicator
 class HomeAdapter(private val context: Context) : Adapter<ViewHolder>() {
     private var homeArticles: List<HomeArticle>? = null
     private var banners: List<com.example.myapplication.entity.home.Banner>? = null
+    private var listener: MyOnClickListener? = null
     private val typeBanner = 0
     private val typeBody = 1
     private val typeFooter = 2
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setHomeArticles(homeArticles: List<HomeArticle>) {
         this.homeArticles = homeArticles
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun setBanners(banners:List<com.example.myapplication.entity.home.Banner>){
+    fun setBanners(banners: List<com.example.myapplication.entity.home.Banner>) {
         this.banners = banners
+    }
+
+    fun setOnClickListener(l: MyOnClickListener) {
+        listener = l
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -96,8 +98,13 @@ class HomeAdapter(private val context: Context) : Adapter<ViewHolder>() {
             }
 
             else -> {
-                holder as BodyViewHolder
-                holder.text.text = Html.fromHtml(homeArticles?.get(position - 1)?.title ?: "")
+                if (homeArticles != null) {
+                    holder as BodyViewHolder
+                    holder.textView.text = Html.fromHtml(homeArticles!![position - 1].title)
+                    holder.itemView.setOnClickListener {
+                        listener?.onClick(it, homeArticles!![position-1])
+                    }
+                }
             }
         }
     }
@@ -107,11 +114,15 @@ class HomeAdapter(private val context: Context) : Adapter<ViewHolder>() {
     }
 
     class BodyViewHolder(itemView: View) : ViewHolder(itemView) {
-        val text: TextView = itemView.findViewById(R.id.text_view)
+        val textView: TextView = itemView.findViewById(R.id.text_view)
     }
 
     class FooterViewHolder(itemView: View) : ViewHolder(itemView) {
 
+    }
+
+    interface MyOnClickListener {
+        fun onClick(view : View,data : HomeArticle)
     }
 
 
